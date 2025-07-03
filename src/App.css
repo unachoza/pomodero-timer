@@ -1,42 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Roboto+Slab:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+	/* color */
+	--Peach: #f87070;
+	--Cyan: #70f3f8;
+	--Lilac: #d881f8;
+	--Dust: #d7e0ff;
+	--MidnightBlue: #1e213f;
+	--BlackBlue: #161932;
+	--Cream: #fff;
+	--Grey: #eff1fa;
+
+	/* fonts  "Kumbh Sans" "Roboto Slab" "Space Mono"; */
+	/* font: [font-weight] [font-size]/[line-height] [font-family]; */
+	--font-H1: 700 6.25rem/7.5rem "Kumbh Sans";
+	--font-H2: 700 1.75rem/2.125rem "Kumbh Sans";
+	--font-H3: 700 1rem "Kumbh Sans";
+	--font-H4: 700 0.8125rem "Kumbh Sans";
+	--font-body1: 700 0.8125rem "Kumbh Sans";
+	--font-body2: 700 0.75rem/0.875rem "Kumbh Sans";
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+	max-width: 1280px;
+	width: 100V;
+	height: 100vh;
+	margin: 0 auto;
+	text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.main {
+	width: 25.625rem;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1.title {
+	color: var(--Dust);
+	/* //CHANGING VARIABLE COLOR */
+	text-align: center;
+	font-family: "Kumbh Sans";
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.tab-container {
+	width: 23.3125rem;
+	height: 3.9375rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 1.96875rem;
+	background: var(--BlackBlue);
 }
 
-.card {
-  padding: 2em;
+.progress-container {
 }
 
-.read-the-docs {
-  color: #888;
+.progress {
+	border-radius: 25.625rem;
+	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+	box-shadow: -50px -50px 100px 0px #272c5a, 50px 50px 100px 0px #121530;
+	width: 25.625rem;
+	height: 25.625rem;
+	flex-shrink: 0;
 }

@@ -4,8 +4,7 @@ import App from "./App";
 test("has text", () => {
 	render(<App />);
 	const message = screen.getByRole("heading");
-    const messag = screen.getByText("Vite")
+	const messag = screen.getByText("Pomodero");
 	expect(message).toBeVisible();
-    expect(messag).toBeVisible();
-
+	expect(messag).toBeVisible();
 });

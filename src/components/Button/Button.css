@@ -1,0 +1,14 @@
+button {
+	width: 8.75rem;
+	height: 3.3125rem;
+	border-radius: 1.65625rem;
+	background: var(--Peach);
+    /* //CHANGING VARIABLE COLOR */
+	font: var(--font-H3);
+	color: var(--Cream);
+}
+
+button:hover {
+	opacity: 0.2031;
+	/* background: #FFF; */
+}
