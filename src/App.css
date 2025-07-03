@@ -67,6 +67,11 @@ h1.title {
 	background: var(--BlackBlue);
 }
 
+.tab {
+	font: var(--font-H4);
+	color: var(--Dust);
+}
+
 .progress-container {
 }
 
