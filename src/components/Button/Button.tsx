@@ -10,6 +10,7 @@ interface ButtonProps {
 
 // BUTTON VARIANTS
 // classic
+// main
 // setting selection
 // icon
 

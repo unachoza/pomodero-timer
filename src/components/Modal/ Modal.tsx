@@ -1,31 +1,33 @@
-import Button from "../Button/Button";
-import closeIcon from "../../assets/icon-close.svg";
-import type { ReactNode } from "react";
-import "./Modal.css";
-import FormInput from "../FormInput/FormInput";
+import Button from '../Button/Button';
+import closeIcon from '../../assets/icon-close.svg';
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
+import './Modal.css';
+import FormInput from '../FormInput/FormInput';
+import { type Customizations, type Timers } from '../../utils/types';
 
 interface ModalProps {
 	toggle: () => void;
+	update: (updateProperty: { key: string; value: string }) => void;
 	// Children: ReactNode
 }
 
-type Timer = {
-	label: string;
-	time: number;
-};
-
-const colorOptions = ["peach", "cyan", "lilac"];
+const colorOptions = ['#f87070', '#70f3f8', '#d881f8'];
 const timeOptions = [
-	{ label: "pomodoro", time: 25 },
-	{ label: "short break", time: 5 },
-	{ label: "long break", time: 15 },
+	{ label: 'pomodoro', time: 25 },
+	{ label: 'short break', time: 5 },
+	{ label: 'long break', time: 15 },
 ];
-const fontOptions = ["Kumbh Sans", "Roboto Slab", "Space Mono"];
+const fontOptions = ['Kumbh Sans', 'Roboto Slab', 'Space Mono'];
 
-const Modal = ({ toggle }: ModalProps) => {
-	const renderControls = <T,>(title: string, options: T[], renderOption: (option: T, index: number) => ReactNode, variant?: string) => {
+const Modal = ({ toggle, update }: ModalProps) => {
+	const renderControls = <T,>(
+		title: string,
+		options: T[],
+		renderOption: (option: T, index: number) => ReactNode,
+		variant?: string
+	) => {
 		return (
-			<div className={`control ${variant ?? ""}`.trim()}>
+			<div className={`control ${variant ?? ''}`.trim()}>
 				<div className="title">{title}</div>
 				<div className="options">{options.map(renderOption)}</div>
 			</div>
@@ -44,32 +46,40 @@ const Modal = ({ toggle }: ModalProps) => {
 				<div className="controlls-container">
 					<div className="time-selection">
 						{renderControls(
-							"Time (minutes)",
+							'Time (minutes)',
 							timeOptions,
 							({ label, time }) => (
 								<FormInput key={label} label={label} time={time} />
 							),
-							"variant-style"
+							'variant-style'
 						)}
 					</div>
 
 					<div className="font-selection">
-						{renderControls("font", fontOptions, (option) => (
-							<Button key={option.toString()} variant="setting-selection" onChange={() => console.log(`change font to ${option}`)}>
+						{renderControls('font', fontOptions, (option) => (
+							<Button
+								key={option.toString()}
+								variant="setting-selection"
+								onChange={() => update({ key: 'font', value: option })}
+							>
 								{option.toString()}
 							</Button>
 						))}
 					</div>
 					<div className="color-selection">
-						{renderControls("color", colorOptions, (option) => (
-							<Button key={option.toString()} variant="setting-selection" onChange={() => console.log(`change color to ${option}`)}>
+						{renderControls('color', colorOptions, (option) => (
+							<Button
+								key={option.toString()}
+								variant="setting-selection"
+								onChange={() => update({ key: 'color', value: option })}
+							>
 								{option.toString()}
 							</Button>
 						))}
 					</div>
 				</div>
 				<div className="modal-button">
-					<Button type="submit" variant="classic" onChange={() => console.log("click")}>
+					<Button type="submit" variant="classic" onChange={() => console.log('click')}>
 						Apply
 					</Button>
 				</div>

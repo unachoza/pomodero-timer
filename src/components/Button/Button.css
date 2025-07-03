@@ -41,3 +41,12 @@ button.icon {
   background-color: inherit;
   opacity: 0.5;
 }
+
+button.main {
+  height: fit-content;
+  background-color: inherit;
+  font: var(--font-h3);
+  text-align: center;
+  color: var(--dust);
+  letter-spacing: 0.9375rem;
+}
