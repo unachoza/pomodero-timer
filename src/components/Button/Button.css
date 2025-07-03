@@ -1,40 +1,43 @@
 button {
-	width: 8.75rem;
-	height: 3.3125rem;
-	border-radius: 1.65625rem;
-	background: var(--Peach);
-	/* //CHANGING VARIABLE COLOR */
-	font: var(--font-H3);
-	color: var(--Cream);
-	border: none;
+  width: 8.75rem;
+  height: 3.3125rem;
+  border: none;
+  border-radius: 1.6563rem;
+  background: var(--peach);
+
+  /* //CHANGING VARIABLE COLOR */
+  font: var(--font-h3);
+  color: var(--cream);
 }
 
 button:hover {
-	opacity: 0.6;
-	/* background: #FFF; */
+  opacity: 0.6;
+
+  /* background: #FFF; */
 }
 
 button.classic {
-	width: 8.75rem;
-	height: 3.3125rem;
-	border-radius: 1.65625rem;
-	background: var(--Peach);
-	/* //CHANGING VARIABLE COLOR */
-	font: var(--font-H3);
-	color: var(--Cream);
+  width: 8.75rem;
+  height: 3.3125rem;
+  border-radius: 1.6563rem;
+  background: var(--peach);
+
+  /* //CHANGING VARIABLE COLOR */
+  font: var(--font-h3);
+  color: var(--cream);
 }
 
 button.setting-selection {
-	height: 2.5rem;
-	width: 2.5rem;
-	border-radius: 50%;
-	background-color: var(--Cyan);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--cyan);
 }
 
 button.icon {
-	width: 0.875rem;
-	height: 0.875rem;
-	background-color: inherit;
-	opacity: 0.5;
-	border: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: none;
+  background-color: inherit;
+  opacity: 0.5;
 }

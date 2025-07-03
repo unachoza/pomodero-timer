@@ -20,7 +20,7 @@ function App() {
 				<div className="progress"></div>
 			</div>
 			<div className="settings">
-				<Button type="button" variant="icon" onChange={toggling}>
+				<Button variant="icon" onChange={toggling}>
 					<img src={settingsIcon} alt="adjust settings" />
 				</Button>
 			</div>

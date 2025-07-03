@@ -2,21 +2,22 @@
 
 :root {
 	/* color */
-	--Peach: #f87070;
-	--Cyan: #70f3f8;
-	--Lilac: #d881f8;
-	--Dust: #d7e0ff;
-	--MidnightBlue: #1e213f;
-	--BlackBlue: #161932;
-	--Cream: #fff;
-	--Grey: #eff1fa;
+	--peach: #f87070;
+	--cyan: #70f3f8;
+	--lilac: #d881f8;
+	--dust: #d7e0ff;
+	--midnight-blue: #1e213f;
+	--black-blue: #161932;
+	--cream: #fff;
+	--grey: #eff1fa;
 
 	/* fonts  "Kumbh Sans" "Roboto Slab" "Space Mono"; */
+
 	/* font: [font-weight] [font-size]/[line-height] [font-family]; */
-	--font-H1: 700 6.25rem/7.5rem "Kumbh Sans";
-	--font-H2: 700 1.75rem/2.125rem "Kumbh Sans";
-	--font-H3: 700 1rem "Kumbh Sans";
-	--font-H4: 700 0.8125rem "Kumbh Sans";
+	--font-h1: 700 6.25rem/7.5rem "Kumbh Sans";
+	--font-h2: 700 1.75rem/2.125rem "Kumbh Sans";
+	--font-h3: 700 1rem "Kumbh Sans";
+	--font-h4: 700 0.8725rem "Kumbh Sans";
 	--font-body1: 700 0.8125rem "Kumbh Sans";
 	--font-body2: 700 0.75rem/0.875rem "Kumbh Sans";
 }
@@ -24,62 +25,63 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 #root {
-	max-width: 1280px;
-	width: 100V;
+	width: 100vw;
 	height: 100vh;
 	margin: 0 auto;
 	text-align: center;
+	max-width: 1280px;
 }
 
 .main {
-	width: 25.625rem;
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: space-evenly;
+	align-items: center;
+	width: 25.625rem;
+	height: 100vh;
 }
 
 h1.title {
-	color: var(--Dust);
-	/* //CHANGING VARIABLE COLOR */
-	text-align: center;
-	font-family: "Kumbh Sans";
 	font-size: 2rem;
-	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
+
+	/* //CHANGING VARIABLE COLOR */
+	text-align: center;
+	color: var(--dust);
+	font-family: "Kumbh Sans", sans-serif;
+	font-style: normal;
 }
 
 .tab-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 	width: 23.3125rem;
 	height: 3.9375rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	border-radius: 1.96875rem;
-	background: var(--BlackBlue);
+	border-radius: 1.9688rem;
+	background: var(--black-blue);
 }
 
 .tab {
-	font: var(--font-H4);
-	color: var(--Dust);
+	font: var(--font-h4);
+	color: var(--dust);
 }
 
-.progress-container {
-}
+/* .progress-container {
+} */
 
 .progress {
-	border-radius: 25.625rem;
-	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
-	box-shadow: -50px -50px 100px 0px #272c5a, 50px 50px 100px 0px #121530;
 	width: 25.625rem;
 	height: 25.625rem;
+	border-radius: 25.625rem;
+	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+	box-shadow: -50px -50px 100px 0 #272c5a, 50px 50px 100px 0 #121530;
 	flex-shrink: 0;
 }

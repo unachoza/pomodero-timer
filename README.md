@@ -1,4 +1,4 @@
-# Pomodoro timer
+# Pomodoro Timer
 
 ## The challenge
 Users should be able to
@@ -7,3 +7,7 @@ Users should be able to
 - Customize how long each timer runs for
 - See a circular progress bar that updates every minute and represents how far through their timer they are
 - Customize the appearance of the app with the ability to set preferences for colors and fonts# pomodero-timer
+
+
+
+Strong understanding of the browser programming environment (the DOM, data-fetching APIs, storage APIs, sessions, HTTP, caching, etc).
