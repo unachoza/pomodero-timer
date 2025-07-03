@@ -3,11 +3,14 @@
 :root {
 	/* color */
 	--peach: #f87070;
+	--peach-opacity: 248, 112, 112;
 	--cyan: #70f3f8;
 	--lilac: #d881f8;
 	--dust: #d7e0ff;
 	--midnight-blue: #1e213f;
+	--midnight-blue-opacity: 30, 33, 63;
 	--black-blue: #161932;
+	--black-blue-opacity: 30, 33, 63;
 	--cream: #fff;
 	--grey: #eff1fa;
 
@@ -43,7 +46,6 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	width: 25.625rem;
 	height: 100vh;
 }
 
@@ -78,10 +80,16 @@ h1.title {
 } */
 
 .progress {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	width: 25.625rem;
 	height: 25.625rem;
 	border-radius: 25.625rem;
 	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
 	box-shadow: -50px -50px 100px 0 #272c5a, 50px 50px 100px 0 #121530;
-	flex-shrink: 0;
+	font: var(--font-h1);
+	color: var(--dust);
+
 }

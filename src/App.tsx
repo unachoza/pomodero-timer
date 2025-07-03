@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modal from './components/Modal/ Modal';
 import Button from './components/Button/Button';
 import settingsIcon from './assets/icon-settings.svg';
+import SvgComponent from './components/Button/SvgComponent';
 import { type Customizations, type Timers } from './utils/types';
 import './App.css';
 
@@ -65,7 +66,7 @@ function App() {
 			</div>
 			<div className="settings">
 				<Button variant="icon" onChange={toggling}>
-					<img src={settingsIcon} alt="adjust settings" />
+					<SvgComponent iconSvg={settingsIcon} />
 				</Button>
 			</div>
 			{isOpen && <Modal toggle={toggling} update={updateCustomizations} />}

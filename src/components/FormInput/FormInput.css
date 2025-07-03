@@ -13,7 +13,8 @@
 label {
   padding-left: 0.15rem;
   font: var(--font-body2);
-  color: #1e213f54;
+  /* stylelint-disable-next-line color-function-notation */
+  color: rgba(var(--midnight-blue-opacity), 0.4);
 }
 
 .input {
@@ -43,7 +44,32 @@ input {
   right: 1rem;
 }
 
+
+.controls .arrow-icon {
+  /* stylelint-disable-next-line color-function-notation */
+  color: rgba(var(--midnight-blue-opacity), 0.4);
+  cursor: pointer;
+  transition: color 0.1s ease; 
+}
+
+.controls .arrow-icon:hover {
+  color: var(--midnight-blue);
+}
+
+
 .variant-style {
   flex-direction: column;
   align-items: flex-start;
+}
+
+.fa-solid{
+  font-weight: 900;
+  color: red;
+  fill: red;
+}
+
+i {
+  font-weight: 900;
+  color: red;
+  fill: red;
 }

@@ -4,6 +4,7 @@ import type { Dispatch, ReactNode, SetStateAction } from 'react';
 import './Modal.css';
 import FormInput from '../FormInput/FormInput';
 import { type Customizations, type Timers } from '../../utils/types';
+import SvgComponent from '../Button/SvgComponent';
 
 interface ModalProps {
 	toggle: () => void;
@@ -11,13 +12,21 @@ interface ModalProps {
 	// Children: ReactNode
 }
 
-const colorOptions = ['#f87070', '#70f3f8', '#d881f8'];
+const colorOptions = [
+	{ name: 'peach', value: '#f87070' },
+	{ name: 'cyan', value: '#70f3f8' },
+	{ name: 'lilac', value: '#d881f8' },
+];
 const timeOptions = [
 	{ label: 'pomodoro', time: 25 },
 	{ label: 'short break', time: 5 },
 	{ label: 'long break', time: 15 },
 ];
-const fontOptions = ['Kumbh Sans', 'Roboto Slab', 'Space Mono'];
+const fontOptions = [
+	{ name: 'kumbh-sans', value: 'Aa' },
+	{ name: 'roboto-slab', value: 'Aa' },
+	{ name: 'space-mono', value: 'Aa' },
+];
 
 const Modal = ({ toggle, update }: ModalProps) => {
 	const renderControls = <T,>(
@@ -40,7 +49,7 @@ const Modal = ({ toggle, update }: ModalProps) => {
 				<div className="heading">
 					<h2>Settings</h2>
 					<Button type="button" variant="icon" onChange={toggle}>
-						<img src={closeIcon} alt="adjust settings" />
+						<SvgComponent iconSvg={closeIcon} />
 					</Button>
 				</div>
 				<div className="controlls-container">
@@ -58,22 +67,24 @@ const Modal = ({ toggle, update }: ModalProps) => {
 					<div className="font-selection">
 						{renderControls('font', fontOptions, (option) => (
 							<Button
-								key={option.toString()}
+								key={option.name.toString()}
 								variant="setting-selection"
-								onChange={() => update({ key: 'font', value: option })}
+								setting={option.name}
+								onChange={() => update({ key: 'font', value: option.name })}
 							>
-								{option.toString()}
+								{option.value.toString()}
 							</Button>
 						))}
 					</div>
 					<div className="color-selection">
 						{renderControls('color', colorOptions, (option) => (
 							<Button
-								key={option.toString()}
+								key={option.name.toString()}
 								variant="setting-selection"
-								onChange={() => update({ key: 'color', value: option })}
+								setting={option.name}
+								onChange={() => update({ key: 'color', value: option.value })}
 							>
-								{option.toString()}
+								{''}
 							</Button>
 						))}
 					</div>

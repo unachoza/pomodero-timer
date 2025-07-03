@@ -10,21 +10,22 @@ button {
   color: var(--cream);
 }
 
-button:hover {
-  opacity: 0.6;
-
-  /* background: #FFF; */
-}
 
 button.classic {
   width: 8.75rem;
   height: 3.3125rem;
   border-radius: 1.6563rem;
   background: var(--peach);
-
+  
   /* //CHANGING VARIABLE COLOR */
   font: var(--font-h3);
   color: var(--cream);
+  transition: filter 0.3s ease;
+}
+
+
+button.classic:hover {
+  filter: brightness(1.2); /* 20% brighter */
 }
 
 button.setting-selection {
@@ -32,6 +33,10 @@ button.setting-selection {
   height: 2.5rem;
   border-radius: 50%;
   background-color: var(--cyan);
+}
+
+button.setting-selection:hover{
+  cursor: pointer;
 }
 
 button.icon {
@@ -50,3 +55,60 @@ button.main {
   color: var(--dust);
   letter-spacing: 0.9375rem;
 }
+
+.setting-selection.peach {
+  background-color: var(--peach);
+}
+
+.setting-selection.cyan {
+  background-color: var(--cyan);
+}
+
+.setting-selection.lilac {
+  background-color: var(--lilac);
+}
+
+.setting-selection.kumbh-sans {
+  background-color: var(--black-blue);
+
+}
+
+.setting-selection.roboto-slab {
+  background-color: var(--dust);
+  font: var(--font-body);
+  font-weight: 400;
+  /* stylelint-disable-next-line color-function-notation */
+  color: rgba(var(--midnight-blue-opacity), 0.7);
+  font-family: "Roboto Slab" ,serif;
+ 
+}
+
+.setting-selection.roboto-slab:hover{
+  outline: 1px solid var(--dust);
+  outline-offset: 4px;
+}
+
+.setting-selection.space-mono {
+  background-color: var(--dust);
+  font: var(--font-body);
+  font-weight: 700;
+  /* stylelint-disable-next-line color-function-notation */
+  color: rgba(var(--midnight-blue-opacity), 0.7);
+  font-family: "Space Mono", serif;
+
+}
+
+
+.icon-wrapper {
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  filter: brightness(0.9);
+}
+
+.icon-wrapper:hover {
+  opacity: 1;
+  filter: brightness(2)
+  
+}
+
