@@ -17,13 +17,11 @@ interface ButtonProps {
 
 const Button = ({ children, type = 'button', variant, setting, onChange }: ButtonProps) => {
 	const allClasses = [variant, setting].filter(Boolean).join(' ');
-	console.log({allClasses})
 	return (
 		<button type={type} className={allClasses} onClick={onChange}>
 			{children}
 		</button>
 	);
-	
 };
 
 export default Button;

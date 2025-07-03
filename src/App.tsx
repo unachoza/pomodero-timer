@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useState, type MouseEvent } from 'react';
 import Modal from './components/Modal/ Modal';
 import Button from './components/Button/Button';
 import settingsIcon from './assets/icon-settings.svg';
 import SvgComponent from './components/Button/SvgComponent';
+import TimerSwitch from './components/TimerSwitch/TimerSwitch';
 import { type Customizations, type Timers } from './utils/types';
 import './App.css';
 
 const DEFAULT_STATE: Customizations = {
 	font: 'Kumbh Sans',
 	color: '#f87070',
-	timers: { pomedero: 25, short: 5, long: 15 },
+	timer: 'short',
 };
 
 function App() {
@@ -17,6 +18,19 @@ function App() {
 	const [customizations, setCustomizations] = useState<Customizations>(DEFAULT_STATE);
 	const [currentTimer, setCurrentTimer] = useState<number>(0);
 	const [isActive, setIsActive] = useState<boolean>(false);
+	const [translateX, setTranslateX] = useState(0);
+
+	console.log({ customizations });
+	console.log(customizations.timer);
+	const handleSelectTimer = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
+		const target = e.target as HTMLElement;
+		const x = target.getBoundingClientRect().left;
+		const time: string = target.innerHTML;
+		console.log({ time });
+		setTranslateX(x - 335);
+		//@ts-ignore
+		updateCustomizations({ key: 'timer', value: time });
+	};
 
 	const toggling = () => setIsOpen((prevState) => !prevState);
 
@@ -50,10 +64,21 @@ function App() {
 	return (
 		<div className="main">
 			<h1 className="title">Pomodero</h1>
+			{/* <TimerSwitch /> */}
 			<div className="tab-container">
-				<div className="tab">pomodero</div>
-				<div className="tab">short break</div>
-				<div className="tab">long break</div>
+				<div
+					className="timer-selector"
+					style={{ transform: `translateX(${translateX}px)` }}
+				></div>
+				<div className="tab" onClick={(e) => handleSelectTimer(e)}>
+					pomodero
+				</div>
+				<div className="tab" onClick={(e) => handleSelectTimer(e)}>
+					short break
+				</div>
+				<div className="tab" onClick={(e) => handleSelectTimer(e)}>
+					long break
+				</div>
 			</div>
 			<div className="progress-container">
 				<div className="progress">

@@ -1,9 +1,8 @@
 import Button from '../Button/Button';
 import closeIcon from '../../assets/icon-close.svg';
-import type { Dispatch, ReactNode, SetStateAction } from 'react';
+import type { ReactNode } from 'react';
 import './Modal.css';
 import FormInput from '../FormInput/FormInput';
-import { type Customizations, type Timers } from '../../utils/types';
 import SvgComponent from '../Button/SvgComponent';
 
 interface ModalProps {
