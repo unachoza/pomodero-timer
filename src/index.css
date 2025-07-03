@@ -21,6 +21,21 @@ body {
 	min-height: 100vh;
 	background-color: #1e213f;
 }
+
+/* remove default number input styles */
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 /* 
 h1 {
   font-size: 3.2em;

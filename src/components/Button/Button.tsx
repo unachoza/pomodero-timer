@@ -13,9 +13,9 @@ interface ButtonProps {
 // setting selection
 // icon
 
-const Button = ({ children, type, variant, onChange }: ButtonProps) => {
+const Button = ({ children, type = "button", variant, onChange }: ButtonProps) => {
 	return (
-		<button type={type} className={`button-${variant}`} onClick={onChange}>
+		<button type={type} className={variant} onClick={onChange}>
 			{children}
 		</button>
 	);

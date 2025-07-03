@@ -6,14 +6,15 @@ button {
 	/* //CHANGING VARIABLE COLOR */
 	font: var(--font-H3);
 	color: var(--Cream);
+	border: none;
 }
 
 button:hover {
-	opacity: 0.2031;
+	opacity: 0.6;
 	/* background: #FFF; */
 }
 
-.button-classic {
+button.classic {
 	width: 8.75rem;
 	height: 3.3125rem;
 	border-radius: 1.65625rem;
@@ -23,14 +24,14 @@ button:hover {
 	color: var(--Cream);
 }
 
-.button-settings-selection {
+button.setting-selection {
 	height: 2.5rem;
 	width: 2.5rem;
 	border-radius: 50%;
 	background-color: var(--Cyan);
 }
 
-.button-icon {
+button.icon {
 	width: 0.875rem;
 	height: 0.875rem;
 	background-color: inherit;
