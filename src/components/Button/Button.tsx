@@ -1,14 +1,22 @@
+import type { ReactNode } from "react";
 import "./Button.css";
 
 interface ButtonProps {
-	text: string;
+	type?: "submit" | "reset" | "button";
+	variant: string;
+	children: ReactNode;
 	onChange: () => void;
 }
 
-const Button = ({ text, onChange }: ButtonProps) => {
+// BUTTON VARIANTS
+// classic
+// setting selection
+// icon
+
+const Button = ({ children, type, variant, onChange }: ButtonProps) => {
 	return (
-		<button type="button" onClick={() => onChange()}>
-			{text}
+		<button type={type} className={`button-${variant}`} onClick={onChange}>
+			{children}
 		</button>
 	);
 };
