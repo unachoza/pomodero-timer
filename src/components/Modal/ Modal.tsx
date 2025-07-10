@@ -7,7 +7,7 @@ import SvgComponent from '../Button/SvgComponent';
 
 interface ModalProps {
 	toggle: () => void;
-	update: (updateProperty: { key: string; value: string }) => void;
+	// update: (updateProperty: { key: string; value: string }) => void;
 	// Children: ReactNode
 }
 
@@ -27,7 +27,7 @@ const fontOptions = [
 	{ name: 'space-mono', value: 'Aa' },
 ];
 
-const Modal = ({ toggle, update }: ModalProps) => {
+const Modal = ({ toggle }: ModalProps) => {
 	const renderControls = <T,>(
 		title: string,
 		options: T[],
@@ -69,7 +69,7 @@ const Modal = ({ toggle, update }: ModalProps) => {
 								key={option.name.toString()}
 								variant="setting-selection"
 								setting={option.name}
-								onChange={() => update({ key: 'font', value: option.name })}
+								onChange={() => console.log({ key: 'font', value: option.name })}
 							>
 								{option.value.toString()}
 							</Button>
@@ -81,7 +81,7 @@ const Modal = ({ toggle, update }: ModalProps) => {
 								key={option.name.toString()}
 								variant="setting-selection"
 								setting={option.name}
-								onChange={() => update({ key: 'color', value: option.value })}
+								onChange={() => console.log({ key: 'color', value: option.value })}
 							>
 								{''}
 							</Button>
@@ -89,7 +89,11 @@ const Modal = ({ toggle, update }: ModalProps) => {
 					</div>
 				</div>
 				<div className="modal-button">
-					<Button type="submit" variant="classic" onChange={() => console.log('click')}>
+					<Button
+						type="submit"
+						variant="classic"
+						onChange={() => console.log({ key: 'color', value: 'something' })}
+					>
 						Apply
 					</Button>
 				</div>

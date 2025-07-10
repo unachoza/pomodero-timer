@@ -4,32 +4,59 @@ import Button from './components/Button/Button';
 import settingsIcon from './assets/icon-settings.svg';
 import SvgComponent from './components/Button/SvgComponent';
 import TimerSwitch from './components/TimerSwitch/TimerSwitch';
-import { type Customizations, type Timers } from './utils/types';
+import { type Customizations, type Timers, type Time } from './utils/types';
 import './App.css';
+
+const timeOptions: Time[] = [
+	{ label: 'pomodoro', value: 25 },
+	{ label: 'short break', value: 5 },
+	{ label: 'long break', value: 15 },
+];
 
 const DEFAULT_STATE: Customizations = {
 	font: 'Kumbh Sans',
 	color: '#f87070',
-	timer: 'short',
+	// timer: timeOptions,
 };
 
+const DEFAULT_TIMERS: Timers = {
+	pomodero: 25,
+	short: 5,
+	long: 15,
+};
+
+type TimerLabel = keyof Timers; // "pomedero" | "short" | "long"
+
 function App() {
-	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [customizations, setCustomizations] = useState<Customizations>(DEFAULT_STATE);
-	const [currentTimer, setCurrentTimer] = useState<number>(0);
+	const [userTimers, setUserTimers] = useState<Timers>(DEFAULT_TIMERS);
+	// const [currentTimer, setCurrentTimer] = useState<Time>({ label: 'pomodero', value: 25 });
+	const [currentTimer, setCurrentTimer] = useState<number>(25);
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [translateX, setTranslateX] = useState(0);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	console.log({ customizations });
-	console.log(customizations.timer);
-	const handleSelectTimer = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
+	console.log({ currentTimer });
+	console.log({ userTimers });
+
+	const getFirstWord = (input: string): string => {
+		const words = input.trim().split(/\s+/);
+		if (words.length > 1) {
+			return words[0];
+		}
+		return input;
+	};
+
+	const handleSelectTimer = (e: MouseEvent<HTMLDivElement>) => {
 		const target = e.target as HTMLElement;
 		const x = target.getBoundingClientRect().left;
-		const time: string = target.innerHTML;
-		console.log({ time });
+		// const time: string = target.innerHTML;
+		const time = getFirstWord(target.innerText) as TimerLabel;
 		setTranslateX(x - 335);
-		//@ts-ignore
-		updateCustomizations({ key: 'timer', value: time });
+		const selected = userTimers[time];
+		setCurrentTimer(selected);
+		// updateCustomizations({ key: 'timer', value: time });
 	};
 
 	const toggling = () => setIsOpen((prevState) => !prevState);
@@ -47,19 +74,22 @@ function App() {
 		console.log({ customizations });
 	};
 
-	const formatTwoDigits = (num: number): string => {
-		return num.toString().padStart(2, '0');
+	const formatTime = (minutes: number): string => {
+		const seconds = minutes * 60;
+		return `${minutes}:00`;
 	};
 
-	const formatTime = (seconds: number): string => {
-		const mins = Math.floor(seconds / 60);
-		const secs = seconds % 60;
-		return `${formatTwoDigits(mins)}:${formatTwoDigits(secs)}`;
-	};
-
-	const startCountdown = () => {
-		console.log('tick tick boom!');
-	};
+	// const startCountdown = () => {
+	// 	const countdownInterval = setInterval(() => {
+	// 		setCurrentTimer((prevTimer) => {
+	// 			if (prevTimer <= 1) {
+	// 				clearInterval(countdownInterval);
+	// 				return 0;
+	// 			}
+	// 			return prevTimer - 1;
+	// 		});
+	// 	}, 1000);
+	// };
 
 	return (
 		<div className="main">
@@ -84,7 +114,8 @@ function App() {
 				<div className="progress">
 					{formatTime(currentTimer)}
 
-					<Button variant="main" onChange={startCountdown}>
+					<Button variant="main" onChange={() => console.log('start countdown')}>
+						{/* onChange={startCountdown} */}
 						{isActive ? 'PAUSE' : 'RESTART'}
 					</Button>
 				</div>
@@ -94,7 +125,8 @@ function App() {
 					<SvgComponent iconSvg={settingsIcon} />
 				</Button>
 			</div>
-			{isOpen && <Modal toggle={toggling} update={updateCustomizations} />}
+			{/* update={updateCustomizations} */}
+			{isOpen && <Modal toggle={toggling} />}
 		</div>
 	);
 }
