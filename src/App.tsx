@@ -31,7 +31,7 @@ function App() {
 	const [customizations, setCustomizations] = useState<Customizations>(DEFAULT_STATE);
 	const [userTimers, setUserTimers] = useState<Timers>(DEFAULT_TIMERS);
 	// const [currentTimer, setCurrentTimer] = useState<Time>({ label: 'pomodero', value: 25 });
-	const [currentTimer, setCurrentTimer] = useState<number>(25);
+	const [currentTimer, setCurrentTimer] = useState<number>(5);
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [translateX, setTranslateX] = useState(0);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -51,11 +51,11 @@ function App() {
 	const handleSelectTimer = (e: MouseEvent<HTMLDivElement>) => {
 		const target = e.target as HTMLElement;
 		const x = target.getBoundingClientRect().left;
-		// const time: string = target.innerHTML;
 		const time = getFirstWord(target.innerText) as TimerLabel;
 		setTranslateX(x - 335);
 		const selected = userTimers[time];
-		setCurrentTimer(selected);
+		console.log(convertMinutesToSeconds(selected));
+		setCurrentTimer(convertMinutesToSeconds(selected));
 		// updateCustomizations({ key: 'timer', value: time });
 	};
 
@@ -74,22 +74,47 @@ function App() {
 		console.log({ customizations });
 	};
 
-	const formatTime = (minutes: number): string => {
-		const seconds = minutes * 60;
-		return `${minutes}:00`;
+
+	const formatCountdownTime = (time: number | string): string => {
+		const totalSeconds = typeof time === 'string' ? parseInt(time, 10) : time;
+
+		if (isNaN(totalSeconds) || totalSeconds <= 0) {
+			return '00:00';
+		}
+
+		const minutes = Math.floor(totalSeconds / 60);
+		const seconds = totalSeconds % 60;
+
+		const formattedMinutes = minutes.toString().padStart(2, '0');
+		const formattedSeconds = seconds.toString().padStart(2, '0');
+
+		return `${formattedMinutes}:${formattedSeconds}`;
 	};
 
-	// const startCountdown = () => {
-	// 	const countdownInterval = setInterval(() => {
-	// 		setCurrentTimer((prevTimer) => {
-	// 			if (prevTimer <= 1) {
-	// 				clearInterval(countdownInterval);
-	// 				return 0;
-	// 			}
-	// 			return prevTimer - 1;
-	// 		});
-	// 	}, 1000);
-	// };
+	const convertMinutesToSeconds = (minutes: number): number => {
+		return minutes * 60;
+	};
+
+	const convertSecondsToMinutes = (seconds: number): string => {
+		return (seconds / 60).toString();
+		// return (seconds/60).toString()
+	};
+
+	const startCountdown = () => {
+		// if countdown says 00 then restart else pause
+		setIsActive(true);
+		const countdownInterval = setInterval(() => {
+			setCurrentTimer((prevTimer) => {
+				console.log(prevTimer);
+				if (prevTimer <= 1) {
+					clearInterval(countdownInterval);
+					setIsActive(false);
+					return 0;
+				}
+				return prevTimer - 1;
+			});
+		}, 1000);
+	};
 
 	return (
 		<div className="main">
@@ -112,10 +137,8 @@ function App() {
 			</div>
 			<div className="progress-container">
 				<div className="progress">
-					{formatTime(currentTimer)}
-
-					<Button variant="main" onChange={() => console.log('start countdown')}>
-						{/* onChange={startCountdown} */}
+					{formatCountdownTime(currentTimer)}
+					<Button variant="main" onChange={startCountdown}>
 						{isActive ? 'PAUSE' : 'RESTART'}
 					</Button>
 				</div>
