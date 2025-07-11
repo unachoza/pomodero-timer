@@ -53,8 +53,6 @@ h1.title {
 	font-size: 2rem;
 	font-weight: 700;
 	line-height: normal;
-
-	/* //CHANGING VARIABLE COLOR */
 	text-align: center;
 	color: var(--dust);
 	font-family: "Kumbh Sans", sans-serif;
@@ -81,7 +79,7 @@ h1.title {
 	/* left: 7.56rem;
       left: 15.5rem; */
 	z-index: 1;
-	background: #F87070;
+	background: var(--color-theme);
 	transition: transform 2s ease;
 	flex-shrink: 0;
 }
@@ -91,6 +89,7 @@ h1.title {
 	z-index: 10;
 	font: var(--font-h4);
 	color: var(--dust);
+	font-family: var(--font-theme);
 }
 
 .timer-selector:hover{
@@ -112,5 +111,6 @@ h1.title {
 	box-shadow: -50px -50px 100px 0 #272c5a, 50px 50px 100px 0 #121530;
 	font: var(--font-h1);
 	color: var(--dust);
+	font-family: var(--font-theme);
 
 }

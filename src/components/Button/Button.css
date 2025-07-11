@@ -32,7 +32,8 @@ button.setting-selection {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: var(--cyan);
+
+  /* background-color: var(--cyan); */
 }
 
 button.setting-selection:hover{
@@ -68,12 +69,12 @@ button.main {
   background-color: var(--lilac);
 }
 
-.setting-selection.kumbh-sans {
+.setting-selection.Kumbh.Sans {
   background-color: var(--black-blue);
 
 }
 
-.setting-selection.roboto-slab {
+.setting-selection.Roboto.Slab {
   background-color: var(--dust);
   font: var(--font-body);
   font-weight: 400;
@@ -83,12 +84,12 @@ button.main {
  
 }
 
-.setting-selection.roboto-slab:hover{
+.setting-selection.Roboto.Slab:hover{
   outline: 1px solid var(--dust);
   outline-offset: 4px;
 }
 
-.setting-selection.space-mono {
+.setting-selection.Space.Mono {
   background-color: var(--dust);
   font: var(--font-body);
   font-weight: 700;

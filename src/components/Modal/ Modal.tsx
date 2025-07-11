@@ -4,10 +4,11 @@ import type { ReactNode } from 'react';
 import './Modal.css';
 import FormInput from '../FormInput/FormInput';
 import SvgComponent from '../Button/SvgComponent';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface ModalProps {
 	toggle: () => void;
-	// update: (updateProperty: { key: string; value: string }) => void;
+	update: (updateProperty: { key: string; value: string }) => void;
 	// Children: ReactNode
 }
 
@@ -22,12 +23,20 @@ const timeOptions = [
 	{ label: 'long break', time: 15 },
 ];
 const fontOptions = [
-	{ name: 'kumbh-sans', value: 'Aa' },
-	{ name: 'roboto-slab', value: 'Aa' },
-	{ name: 'space-mono', value: 'Aa' },
+	{ name: 'Kumbh Sans', value: 'Aa' },
+	{ name: 'Roboto Slab', value: 'Aa' },
+	{ name: 'Space Mono', value: 'Aa' },
 ];
 
 const Modal = ({ toggle }: ModalProps) => {
+	const { font, setFont, color, setColor } = useTheme();
+
+	const handleSubmit = () => {
+		localStorage.setItem('selectedFont', font);
+		localStorage.setItem('selectedColor', color);
+		toggle();
+	};
+
 	const renderControls = <T,>(
 		title: string,
 		options: T[],
@@ -69,7 +78,7 @@ const Modal = ({ toggle }: ModalProps) => {
 								key={option.name.toString()}
 								variant="setting-selection"
 								setting={option.name}
-								onChange={() => console.log({ key: 'font', value: option.name })}
+								onChange={() => setFont(option.name)}
 							>
 								{option.value.toString()}
 							</Button>
@@ -81,7 +90,7 @@ const Modal = ({ toggle }: ModalProps) => {
 								key={option.name.toString()}
 								variant="setting-selection"
 								setting={option.name}
-								onChange={() => console.log({ key: 'color', value: option.value })}
+								onChange={() => setColor(option.value)}
 							>
 								{''}
 							</Button>
@@ -89,11 +98,7 @@ const Modal = ({ toggle }: ModalProps) => {
 					</div>
 				</div>
 				<div className="modal-button">
-					<Button
-						type="submit"
-						variant="classic"
-						onChange={() => console.log({ key: 'color', value: 'something' })}
-					>
+					<Button type="submit" variant="classic" onChange={() => handleSubmit()}>
 						Apply
 					</Button>
 				</div>
