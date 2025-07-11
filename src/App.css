@@ -88,7 +88,7 @@ h1.title {
 	position: relative;
 	z-index: 10;
 	font: var(--font-h4);
-	color: var(--dust);
+	color: var(--midnight-blue);
 	font-family: var(--font-theme);
 }
 
@@ -96,10 +96,7 @@ h1.title {
 	transform: translateX(7.56rem);
 }
 
-/* .progress-container {
-} */
-
-.progress {
+.progress-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -107,10 +104,26 @@ h1.title {
 	width: 25.625rem;
 	height: 25.625rem;
 	border-radius: 25.625rem;
+	position: relative;
 	background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
 	box-shadow: -50px -50px 100px 0 #272c5a, 50px 50px 100px 0 #121530;
 	font: var(--font-h1);
 	color: var(--dust);
 	font-family: var(--font-theme);
+}
 
+.progress-container svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.progress-button {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
